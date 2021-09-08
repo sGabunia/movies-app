@@ -5,7 +5,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 
 import "swiper/swiper.min.css";
-import "swiper/swiper-bundle.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
 
@@ -19,11 +18,11 @@ const Slider = () => {
   return (
     <section>
       <Swiper
-        modules={[Pagination, Navigation, Autoplay]}
         spaceBetween={0}
         autoplay={{
           delay: 3500,
         }}
+        navigation
         pagination={{ clickable: true }}
         loop={true}
         initialSlide={1}
