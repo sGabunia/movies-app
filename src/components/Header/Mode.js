@@ -1,9 +1,12 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleBg } from "../../reducers/toggleBgReducer";
 
 const Mode = () => {
+  const dispatch = useDispatch();
   return (
     <div>
-      <button className="mode">
+      <button className="mode" onClick={() => dispatch(toggleBg())}>
         <svg fill="none" viewBox="0 0 14 20" width="14">
           <path
             fill="#fff"

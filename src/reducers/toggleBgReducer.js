@@ -9,7 +9,7 @@ const toggleBgReducer = (state = false, action) => {
 };
 
 // action creators
-export const toggleMenu = () => {
+export const toggleBg = () => {
   return {
     type: "TOGGLE_BG",
   };

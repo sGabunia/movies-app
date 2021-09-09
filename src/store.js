@@ -7,7 +7,7 @@ import toggleBgReducer from "./reducers/toggleBgReducer";
 
 const reducer = combineReducers({
   movies: moviesReducer,
-  toggleBg: toggleBgReducer,
+  isDarkMode: toggleBgReducer,
 });
 
 const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));

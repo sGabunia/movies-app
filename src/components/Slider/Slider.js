@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -34,6 +34,7 @@ const Slider = () => {
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt="poster"
+                style={{ width: "100hv" }}
               />
             </div>
           </SwiperSlide>
