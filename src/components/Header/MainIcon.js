@@ -1,13 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import mainIcon from "../../assets/icons/mainIcon.svg";
-console.log(mainIcon);
 
 const MainIcon = () => {
   return (
     <div>
-      <button>
+      <Link to="/">
         <img src={mainIcon} alt="main icon" />
-      </button>
+      </Link>
     </div>
   );
 };

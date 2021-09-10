@@ -1,0 +1,29 @@
+.footer {
+  padding: 0.5rem 0;
+  background-color: #202328;
+  color: #d5ddf5;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-social__link {
+  padding: 9px 8px 6px;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: inherit;
+}
+
+.footer-adult-caution {
+  margin-top: 1rem;
+}

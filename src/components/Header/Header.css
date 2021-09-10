@@ -5,14 +5,12 @@
   padding: 1rem 0;
 }
 
-.site-header {
-  background-color: #000000;
+.header {
+  background-color: #202328;
   color: #ccc;
 }
 
-.site-header button {
-  border: 0px;
-  outline: none;
+.header a {
   background-color: transparent;
   text-transform: uppercase;
   cursor: pointer;
@@ -22,18 +20,57 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
 }
 
-.nav__item button {
+.nav__link {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
   color: inherit;
   font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.nav__item:hover {
+  color: rgb(0, 131, 202);
+}
+
+.nav__link {
+  transition: all 0.4s ease-in-out;
+}
+
+/* nav svg's styles on hover */
+svg rect,
+path {
+  transition: all 0.3s ease-in-out;
+}
+
+.svg-icon--tv {
+  height: 24px;
+}
+
+.nav__item:hover .svg-icon--tv rect,
+.nav__item:hover .svg-icon--series rect,
+.nav__item:hover .svg-icon--cinemania rect {
+  stroke: #0083ca;
+}
+
+.nav__item:hover .svg-icon--tv path,
+.nav__item:hover .svg-icon--series path,
+.nav__item:hover .svg-icon--cinemania path {
+  fill: rgb(0, 131, 202);
+}
+
+.nav__item:hover .svg-icon--movies path,
+.nav__item:hover .svg-icon--movies rect {
+  fill: rgb(0, 131, 202);
+}
+.nav__item:hover .svg-icon--kids path {
+  stroke: rgb(0, 131, 202);
 }
 
 .mode {
-  color: rgb(255, 255, 255);
+  cursor: pointer;
 }

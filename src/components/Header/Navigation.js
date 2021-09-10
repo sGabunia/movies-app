@@ -5,8 +5,8 @@ import NavItem from "./NavItem.js";
 const Navigation = () => {
   return (
     <div>
-      <nav className="nav">
-        <ul className="nav__wrapper" role="list">
+      <nav className="nav" aria-label="Main Navigation">
+        <ul className="nav__wrapper">
           {data.map((item) => (
             <NavItem key={item.id} {...item} />
           ))}

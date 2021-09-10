@@ -1,15 +1,15 @@
-import tv from "./assets/icons/tv.svg";
-import filmsIcon from "./assets/icons/filmsIcon.svg";
-import seriesIcon from "./assets/icons/seriesIcon.svg";
-import cinemaniaIcon from "./assets/icons/cinemaniaIcon.svg";
-import forChildrenIcon from "./assets/icons/forChildrenIcon.svg";
+import TvShowsIcon from "./components/Icons/TvShowsIcon";
+import FilmsIcon from "./components/Icons/FilmsIcon";
+import SeriesIcon from "./components/Icons/SeriesIcon";
+import CinemaniaIcon from "./components/Icons/CinemaniaIcon";
+import ChildrenShowIcon from "./components/Icons/ChildrenShowIcon";
 
 const navIcons = [
-  { id: 1, title: "TV", icon: tv },
-  { id: 2, title: "Films", icon: filmsIcon },
-  { id: 3, title: "Series", icon: seriesIcon },
-  { id: 4, title: "Cinemania", icon: cinemaniaIcon },
-  { id: 5, title: "Children", icon: forChildrenIcon },
+  { id: 1, title: "TV", icon: <TvShowsIcon /> },
+  { id: 2, title: "Films", icon: <FilmsIcon /> },
+  { id: 3, title: "Series", icon: <SeriesIcon /> },
+  { id: 4, title: "Cinemania", icon: <CinemaniaIcon /> },
+  { id: 5, title: "Children", icon: <ChildrenShowIcon /> },
 ];
 
 export default navIcons;

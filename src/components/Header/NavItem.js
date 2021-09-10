@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const NavItem = ({ title, icon }) => {
   return (
     <li className="nav__item">
-      <button>
-        <img src={icon} alt="icon" style={{ width: 30, height: 24 }} /> {title}
-      </button>{" "}
+      <Link to={`/${title.toLowerCase()}`} className="nav__link">
+        {icon} {title}
+      </Link>{" "}
     </li>
   );
 };

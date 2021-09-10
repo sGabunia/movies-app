@@ -7,6 +7,7 @@ import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import "swiper/swiper.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "swiper/components/pagination/pagination.min.css";
+import "swiper/components/effect-cube/effect-cube.min.css";
 
 import "./Slider.css";
 
@@ -16,7 +17,7 @@ const Slider = () => {
   const movies = useSelector(({ movies }) => movies);
 
   return (
-    <section>
+    <section className="slider">
       <Swiper
         spaceBetween={0}
         autoplay={{
@@ -26,7 +27,7 @@ const Slider = () => {
         pagination={{ clickable: true }}
         loop={true}
         initialSlide={1}
-        effect="flip"
+        effect="cube"
       >
         {movies.slice(0, 8).map((movie) => (
           <SwiperSlide key={movie.id}>
@@ -34,7 +35,7 @@ const Slider = () => {
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt="poster"
-                style={{ width: "100hv" }}
+                style={{ objectFit: "contain" }}
               />
             </div>
           </SwiperSlide>

@@ -7,4 +7,6 @@ const getAll = async () => {
   return response.data.results;
 };
 
-export default { getAll };
+const getAllData = { getAll };
+
+export default getAllData;

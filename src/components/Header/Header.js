@@ -7,7 +7,7 @@ import Navigation from "./Navigation";
 
 const Header = () => {
   return (
-    <header className="site-header">
+    <header className="header">
       <div className="wrapper header-wrapper">
         <MainIcon />
         <Navigation />

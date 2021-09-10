@@ -5,6 +5,13 @@ import Gallery from "./components/Gallery/Gallery";
 import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { initializeMovies } from "./reducers/moviesReducer";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import TvShows from "./components/TvShows/TvShows";
+import Films from "./components/Films/Films";
+import Series from "./components/Series/Series";
+import Cinemania from "./components/Cinemania/Cinemania";
+import ChilldrenShows from "./components/ChildrenShows/ChilldrenShows";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -17,13 +24,35 @@ function App() {
     document.body.style.backgroundColor = bgStyle;
     document.body.style.color = fontColorStype;
   };
-  useEffect(getData, [dispatch, bgMode]);
+  useEffect(getData, [dispatch, bgMode, bgStyle, fontColorStype]);
 
   return (
     <>
-      <Header />
-      <Slider />
-      <Gallery />
+      <Router>
+        <Header />
+        <Switch>
+          <Route exact path="/">
+            <Slider />
+            <Gallery />
+          </Route>
+          <Route path="/tv">
+            <TvShows />
+          </Route>
+          <Route path="/films">
+            <Films />
+          </Route>
+          <Route path="/series">
+            <Series />
+          </Route>
+          <Route path="/cinemania">
+            <Cinemania />
+          </Route>
+          <Route path="/children">
+            <ChilldrenShows />
+          </Route>
+        </Switch>
+        <Footer />
+      </Router>
     </>
   );
 }
