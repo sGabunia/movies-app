@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
-const Gall = ({ src }) => {
+const Gall = ({ src, id }) => {
   const [isShown, setIsShown] = useState(false);
   return (
     <div
@@ -8,7 +9,7 @@ const Gall = ({ src }) => {
       onMouseLeave={() => setIsShown(false)}
     >
       {" "}
-      <a href="http://" target="_blank" rel="noopener noreferrer">
+      <Link to={`/details/${id}`}>
         <img
           src={`https://image.tmdb.org/t/p/original${src}`}
           alt="film poster"
@@ -30,7 +31,7 @@ const Gall = ({ src }) => {
             <h2>Hello</h2>
           </div>
         ) : null}
-      </a>
+      </Link>
     </div>
   );
 };

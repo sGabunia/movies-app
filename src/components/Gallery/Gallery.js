@@ -24,10 +24,11 @@ const Gallery = () => {
           slidesPerView={5}
           navigation
           style={{ position: "relative" }}
+          autoHeight
         >
-          {movies.map((movie) => (
+          {movies?.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <Gall src={movie.poster_path} />
+              <Gall src={movie.poster_path} id={movie.id} />
             </SwiperSlide>
           ))}
         </Swiper>

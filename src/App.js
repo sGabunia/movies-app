@@ -12,19 +12,23 @@ import Series from "./components/Series/Series";
 import Cinemania from "./components/Cinemania/Cinemania";
 import ChilldrenShows from "./components/ChildrenShows/ChilldrenShows";
 import Footer from "./components/Footer/Footer";
+import Movie from "./components/Movie/Movie";
+import Banner from "./components/Banner/Banner";
 
 function App() {
   const dispatch = useDispatch();
   const bgMode = useSelector(({ isDarkMode }) => isDarkMode);
 
-  const bgStyle = bgMode ? "#202328" : "#d5ddf5";
-  const fontColorStype = bgMode ? "#d5ddf5" : "#202328";
   const getData = () => {
     dispatch(initializeMovies());
-    document.body.style.backgroundColor = bgStyle;
-    document.body.style.color = fontColorStype;
   };
-  useEffect(getData, [dispatch, bgMode, bgStyle, fontColorStype]);
+
+  const toggleBg = () => {
+    document.body.style.backgroundColor = bgMode ? "#202328" : "#d5ddf5";
+    document.body.style.color = bgMode ? "#d5ddf5" : "#202328";
+  };
+  useEffect(getData, [dispatch]);
+  useEffect(toggleBg, [bgMode]);
 
   return (
     <>
@@ -33,7 +37,12 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Slider />
+            <Banner />
             <Gallery />
+            <Banner />
+          </Route>
+          <Route path="/details/:id">
+            <Movie />
           </Route>
           <Route path="/tv">
             <TvShows />
