@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
-import Gall from "./Gall";
+import GalleryItem from "./GalleryItem";
 
 import "swiper/swiper.min.css";
 import "swiper/components/navigation/navigation.min.css";
@@ -19,16 +19,10 @@ const Gallery = () => {
         <div>
           <h2 className="gallery__title">popular movies</h2>
         </div>
-        <Swiper
-          spaceBetween={10}
-          slidesPerView={5}
-          navigation
-          style={{ position: "relative" }}
-          autoHeight
-        >
+        <Swiper spaceBetween={10} slidesPerView={5} navigation autoHeight>
           {movies?.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <Gall src={movie.poster_path} id={movie.id} />
+              <GalleryItem src={movie.poster_path} id={movie.id} />
             </SwiperSlide>
           ))}
         </Swiper>
