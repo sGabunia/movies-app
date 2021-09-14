@@ -1,14 +1,15 @@
-.card {
-  display: flex;
+.movie-details {
+  flex-grow: 1;
+}
+.movie-details__card {
+  display: grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
   gap: 2rem;
-  padding: 13rem 0;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
 }
 
-.card-image {
-  width: 23%;
-}
-
-.card-content {
+.movie-details__card-content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -24,11 +25,20 @@
   display: inline-block;
   margin-right: 1rem;
   padding: 0.25rem 0.75rem;
-  border: 2px solid blue;
+  border: 3px solid rgb(46, 45, 45);
   border-radius: 1rem;
 }
 
 .overview {
   max-width: 65ch;
   font-size: 1.2rem;
+}
+
+.btn-back {
+  padding: 5px 15px;
+  color: inherit;
+  border: 3px solid rgb(46, 45, 45);
+  border-radius: 4px;
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
 }

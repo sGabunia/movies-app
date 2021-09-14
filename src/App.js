@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
-import Header from "./components/Header/Header";
-import Slider from "./components/Slider/Slider";
-import Gallery from "./components/Gallery/Gallery";
-import "./App.css";
+
 import { useSelector, useDispatch } from "react-redux";
 import { initializeMovies } from "./reducers/moviesReducer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import Header from "./components/Header/Header";
+import MainContent from "./components/MainContent/MainContent";
 import TvShows from "./components/TvShows/TvShows";
 import Films from "./components/Films/Films";
 import Series from "./components/Series/Series";
@@ -13,7 +13,8 @@ import Cinemania from "./components/Cinemania/Cinemania";
 import ChilldrenShows from "./components/ChildrenShows/ChilldrenShows";
 import Footer from "./components/Footer/Footer";
 import Movie from "./components/Movie/Movie";
-import Banner from "./components/Banner/Banner";
+
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,15 +32,13 @@ function App() {
   useEffect(toggleBg, [bgMode]);
 
   return (
-    <>
+    <div className="container">
       <Router>
         <Header />
+
         <Switch>
           <Route exact path="/">
-            <Slider />
-            <Banner />
-            <Gallery />
-            <Banner />
+            <MainContent />
           </Route>
           <Route path="/details/:id">
             <Movie />
@@ -60,9 +59,10 @@ function App() {
             <ChilldrenShows />
           </Route>
         </Switch>
+
         <Footer />
       </Router>
-    </>
+    </div>
   );
 }
 

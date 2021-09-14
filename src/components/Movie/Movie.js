@@ -9,13 +9,12 @@ const Movie = () => {
   const id = useParams().id;
 
   let selectedMovie = movies.find((movie) => movie.id === id);
-  console.log(selectedMovie);
 
   return (
-    <section>
+    <section className="movie-details">
       <div className="wrapper">
-        <div className="card">
-          <div className="card-image">
+        <div className="movie-details__card">
+          <div className="movie-details__card-image">
             <img
               src={`https://image.tmdb.org/t/p/original${selectedMovie?.poster_path}`}
               alt="film poster"
@@ -46,6 +45,11 @@ const Movie = () => {
               </li>
             </ul>
           </div>
+        </div>
+        <div style={{ textAlign: "center" }}>
+          <Link to="/" className="btn-back">
+            Go Back
+          </Link>
         </div>
       </div>
     </section>

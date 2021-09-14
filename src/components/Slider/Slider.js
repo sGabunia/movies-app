@@ -17,7 +17,7 @@ const Slider = () => {
   const movies = useSelector(({ movies }) => movies);
 
   return (
-    <section className="slider">
+    <section className="slider" style={{ position: "relative" }}>
       <Swiper
         spaceBetween={0}
         autoplay={{
@@ -27,7 +27,9 @@ const Slider = () => {
         pagination={{ clickable: true }}
         loop={true}
         initialSlide={1}
+        slidesPerView={1}
         effect="cube"
+        className="mainSwiper"
       >
         {movies.slice(0, 8).map((movie) => (
           <SwiperSlide key={movie.id}>
@@ -35,7 +37,11 @@ const Slider = () => {
               <img
                 src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                 alt="poster"
-                style={{ objectFit: "contain" }}
+                style={{
+                  width: "100%",
+                  height: "700px",
+                  objectFit: "cover",
+                }}
               />
             </div>
           </SwiperSlide>

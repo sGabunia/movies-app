@@ -79,6 +79,8 @@ select {
   }
 }
 
+/* footer always stick at bottom */
+
 /* center content */
 .wrapper {
   max-width: 980px;
@@ -89,8 +91,13 @@ select {
 }
 
 .imposter {
-  height: 100vh;
+  display: grid;
+  place-items: center;
+  flex-grow: 1;
+}
+
+.container {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
 }

@@ -1,9 +1,10 @@
 import React from "react";
-import "./Header.css";
 
 import MainIcon from "./MainIcon";
 import Mode from "./Mode";
 import Navigation from "./Navigation";
+
+import "./Header.css";
 
 const Header = () => {
   return (

@@ -19,10 +19,10 @@ const Gallery = () => {
         <div>
           <h2 className="gallery__title">popular movies</h2>
         </div>
-        <Swiper spaceBetween={10} slidesPerView={5} navigation autoHeight>
+        <Swiper spaceBetween={10} slidesPerView={5} navigation>
           {movies?.map((movie) => (
             <SwiperSlide key={movie.id}>
-              <GalleryItem src={movie.poster_path} id={movie.id} />
+              <GalleryItem movie={movie} />
             </SwiperSlide>
           ))}
         </Swiper>

@@ -6,9 +6,8 @@
 .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: #fff;
 }
-
 @media (min-width: 980px) {
-  .swiper-wrapper {
-    height: 550px;
+  .swiper-container.mainSwiper {
+    height: 700px;
   }
 }
