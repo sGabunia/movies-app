@@ -1,11 +1,10 @@
-import { v4 as uuidv4 } from "uuid";
 import movieService from "../services/movies";
 
 const moviesReducer = (state = [], action) => {
   switch (action.type) {
     case "INIT_MOVIES":
       const newMovies = action.data.map((movie) => {
-        return { ...movie, id: uuidv4() };
+        return { ...movie };
       });
       return newMovies;
     default:

@@ -14,7 +14,6 @@ const Gall = ({ movie }) => {
       {" "}
       <Link to={`/details/${movie.id}`}>
         <img
-          loading="lazy"
           src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
           alt="film poster"
         />

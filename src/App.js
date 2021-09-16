@@ -15,6 +15,7 @@ import Footer from "./components/Footer/Footer";
 import Movie from "./components/Movie/Movie";
 
 import "./App.css";
+import MoviesByGenreList from "./components/MovieByGenreList/MoviesByGenreList";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,6 +43,9 @@ function App() {
           </Route>
           <Route path="/details/:id">
             <Movie />
+          </Route>
+          <Route exact path="/genre/:id">
+            <MoviesByGenreList />
           </Route>
           <Route path="/tv">
             <TvShows />

@@ -10,17 +10,17 @@ const Footer = () => {
           <nav aria-label="Footer">
             <ul className="footer-social">
               <li>
-                <a className="footer-social__link" href="">
+                <a className="footer-social__link" href="#">
                   Agreement
                 </a>
               </li>
               <li>
-                <a className="footer-social__link" href="">
+                <a className="footer-social__link" href="#">
                   Faq
                 </a>
               </li>
               <li>
-                <a className="footer-social__link" href="">
+                <a className="footer-social__link" href="#">
                   Contact
                 </a>
               </li>
