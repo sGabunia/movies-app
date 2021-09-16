@@ -6,13 +6,13 @@ import Navigation from "./Navigation";
 
 import "./Header.css";
 
-const Header = () => {
+const Header = ({ setMode, mode }) => {
   return (
     <header className="header">
       <div className="wrapper header-wrapper">
         <MainIcon />
         <Navigation />
-        <Mode />
+        <Mode setMode={setMode} mode={mode} />
       </div>
     </header>
   );

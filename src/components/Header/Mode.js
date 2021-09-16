@@ -1,14 +1,15 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleBg } from "../../reducers/toggleBgReducer";
 
-const Mode = () => {
-  const dispatch = useDispatch();
-  const bgMode = useSelector(({ isDarkMode }) => isDarkMode);
-  const color = !bgMode ? "#fff" : "#0083ca";
+const Mode = ({ setMode, mode }) => {
+  const color = !mode ? "#fff" : "#0083ca";
+
+  const handleClick = () => {
+    setMode(!mode);
+  };
+
   return (
     <div>
-      <span className="mode" onClick={() => dispatch(toggleBg())}>
+      <span className="mode" onClick={handleClick}>
         <svg fill="none" viewBox="0 0 14 20" width="14">
           <path
             fill={color}

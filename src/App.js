@@ -17,25 +17,30 @@ import Movie from "./components/Movie/Movie";
 import "./App.css";
 import MoviesByGenreList from "./components/MovieByGenreList/MoviesByGenreList";
 
+import useLocalStorage from "./hooks/useLocalStorage";
+
 function App() {
   const dispatch = useDispatch();
-  const bgMode = useSelector(({ isDarkMode }) => isDarkMode);
+  const [storedValue, setValue] = useLocalStorage("memory", false);
 
   const getData = () => {
     dispatch(initializeMovies());
   };
 
-  const toggleBg = () => {
-    document.body.style.backgroundColor = bgMode ? "#202328" : "#d5ddf5";
-    document.body.style.color = bgMode ? "#d5ddf5" : "#202328";
-  };
   useEffect(getData, [dispatch]);
-  useEffect(toggleBg, [bgMode]);
+
+  console.log(storedValue);
 
   return (
-    <div className="container">
+    <div
+      className="container"
+      style={{
+        backgroundColor: storedValue ? "#202328" : "#d5ddf5",
+        color: storedValue ? "#d5ddf5" : "#202328",
+      }}
+    >
       <Router>
-        <Header />
+        <Header setMode={setValue} mode={storedValue} />
 
         <Switch>
           <Route exact path="/">
