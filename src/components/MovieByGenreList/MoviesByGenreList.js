@@ -30,7 +30,7 @@ const MoviesByGenreList = () => {
             <img
               loading="lazy"
               key={movie.id}
-              src={`https://image.tmdb.org/t/p/original${movie?.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w342${movie?.poster_path}`}
               alt="movie poster"
             />
           ))}
