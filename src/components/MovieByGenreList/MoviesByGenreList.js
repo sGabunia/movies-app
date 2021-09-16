@@ -37,9 +37,14 @@ const MoviesByGenreList = () => {
         </div>
       </div>
       <div className="center-links">
-        <button className="btn btn-load" onClick={() => handleClick(id, page)}>
-          load more
-        </button>
+        {movies ? (
+          <button
+            className="btn btn-load"
+            onClick={() => handleClick(id, page)}
+          >
+            load more
+          </button>
+        ) : null}
       </div>
     </div>
   );
