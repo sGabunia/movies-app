@@ -1,10 +1,14 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { toggleBg } from "../../reducers/toggleBgReducer";
 
 const Mode = ({ setMode, mode }) => {
   const color = !mode ? "#fff" : "#0083ca";
+  const dispatch = useDispatch();
 
   const handleClick = () => {
     setMode(!mode);
+    dispatch(toggleBg());
   };
 
   return (

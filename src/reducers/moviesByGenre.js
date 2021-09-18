@@ -1,16 +1,30 @@
 import movieService from "../services/movies";
 
-const moviesByGenreReducer = (state = [], action) => {
+export const initialState = {
+  movies: [],
+  loading: false,
+  hasErrors: false,
+};
+
+const moviesByGenreReducer = (state = initialState, action) => {
   switch (action.type) {
     case "INIT_MOVIES_BY_GENRE": {
       const newMovies = action.data.map((movie) => {
         return { ...movie };
       });
-      return newMovies;
+      return { movies: newMovies, loading: false, hasErrors: false };
     }
     case "LOAD_MORE_MOVIES": {
-      return [...state, ...action.data];
+      return {
+        movies: [...state.movies, ...action.data],
+        loading: false,
+        hasErrors: false,
+      };
     }
+    case "GET_POSTS": {
+      return { ...state, loading: true, hasErrors: false };
+    }
+
     default:
       return state;
   }
@@ -30,6 +44,7 @@ export const initializeMoviesByGenre = (id) => {
 
 export const loadMoreMoviesByGenre = (id, page) => {
   return async (dispatch) => {
+    dispatch({ type: "GET_POSTS" });
     const movies = await movieService.loadMoreMovies(id, page);
     dispatch({
       type: "LOAD_MORE_MOVIES",

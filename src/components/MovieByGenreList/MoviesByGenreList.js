@@ -9,7 +9,10 @@ import "./MoviesByGenderList.css";
 
 const MoviesByGenreList = () => {
   const [page, setPage] = useState(2);
-  const movies = useSelector(({ moviesByGenre }) => moviesByGenre);
+  const { movies, loading } = useSelector(({ moviesByGenre }) => ({
+    movies: moviesByGenre.movies,
+    loading: moviesByGenre.loading,
+  }));
   const dispatch = useDispatch();
   const id = useParams().id;
 
@@ -39,10 +42,16 @@ const MoviesByGenreList = () => {
       <div className="center-links">
         {movies ? (
           <button
-            className="btn btn-load"
+            className="push-button-3d"
             onClick={() => handleClick(id, page)}
           >
-            load more
+            {!loading ? (
+              "LOAD MORE"
+            ) : (
+              <>
+                LOADING... <div className="lds-dual-ring"></div>
+              </>
+            )}
           </button>
         ) : null}
       </div>

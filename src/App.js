@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 
-import { useSelector, useDispatch } from "react-redux";
+import useLocalStorage from "./hooks/useLocalStorage";
+import { useDispatch } from "react-redux";
 import { initializeMovies } from "./reducers/moviesReducer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
@@ -13,15 +14,13 @@ import Cinemania from "./components/Cinemania/Cinemania";
 import ChilldrenShows from "./components/ChildrenShows/ChilldrenShows";
 import Footer from "./components/Footer/Footer";
 import Movie from "./components/Movie/Movie";
-
-import "./App.css";
 import MoviesByGenreList from "./components/MovieByGenreList/MoviesByGenreList";
 
-import useLocalStorage from "./hooks/useLocalStorage";
+import "./App.css";
 
 function App() {
   const dispatch = useDispatch();
-  const [storedValue, setValue] = useLocalStorage("memory", false);
+  const [savedBgValue, setSavedBgValue] = useLocalStorage("memory", false);
 
   const getData = () => {
     dispatch(initializeMovies());
@@ -29,18 +28,16 @@ function App() {
 
   useEffect(getData, [dispatch]);
 
-  console.log(storedValue);
-
   return (
     <div
       className="container"
       style={{
-        backgroundColor: storedValue ? "#202328" : "#d5ddf5",
-        color: storedValue ? "#d5ddf5" : "#202328",
+        backgroundColor: savedBgValue ? "#202328" : "#d5ddf5",
+        color: savedBgValue ? "#d5ddf5" : "#202328",
       }}
     >
       <Router>
-        <Header setMode={setValue} mode={storedValue} />
+        <Header setMode={setSavedBgValue} mode={savedBgValue} />
 
         <Switch>
           <Route exact path="/">
