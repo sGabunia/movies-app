@@ -3,15 +3,18 @@ import { useDispatch } from "react-redux";
 
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
+import { initializeMovieByDetails } from "../../reducers/movieDetailsReducer";
 
 import MovieGenres from "./MovieGenres";
-import "./Movie.css";
-import { initializeMovieByDetails } from "../../reducers/movieDetailsReducer";
+
 import MovieTrailer from "./MovieTrailer";
+import MovieCast from "./MovieCast";
+
+import "./Movie.css";
 
 const Movie = () => {
   const dispatch = useDispatch();
-  const movie = useSelector(({ movieDetails }) => movieDetails);
+  const movie = useSelector(({ movieDetails }) => movieDetails.data);
 
   const id = useParams().id;
 
@@ -19,12 +22,17 @@ const Movie = () => {
     dispatch(initializeMovieByDetails(id));
   }, [dispatch, id]);
 
+  const director = movie?.crew?.find((movie) => movie.department === "Directing").name
+  const producer = movie?.crew?.find((movie) => movie.department === "Production").name
+  const costumes = movie?.crew?.find((movie) => movie.department === "Costume & Make-Up").name
+
+ console.log(movie?.crew)
   return (
     <section className="movie-details">
       <div className="wrapper">
         <div className="movie-details__card">
           <div className="movie-details__card-image">
-            {movie.poster_path ? (
+          {movie?.poster_path ? (
               <img
                 src={`https://image.tmdb.org/t/p/w342${movie?.poster_path}`}
                 alt="film poster"
@@ -35,23 +43,41 @@ const Movie = () => {
           </div>
           <div className="card-content">
             <div className="card-content__header">
-              <h2>{movie?.original_title}</h2>
+              <h2>{movie?.original_title} ({movie?.release_date.slice(0, 4)})</h2>
               <p>
                 <MovieGenres movie={movie} />
               </p>
             </div>
-            <p className="overview">{movie?.overview}</p>
-            <ul>
+
+            <ul className="card-content__score">
               <li>
-                <strong>Release Date: {movie?.release_date}</strong>{" "}
-              </li>
-              <li>
-                <strong>IMBD Rating: {movie?.vote_average}</strong>{" "}
+                <div className="imbd-score">
+               <strong>{movie?.vote_average * 10} %</strong>
+                </div>
               </li>
             </ul>
+            <div className="card-content__info">
+              <h3>Overview</h3>
+              <p className="overview">{movie?.overview}</p>
+            </div>
+              <ul className="card-content__crew">
+                <li className="profile">
+                  <p><strong>{director}</strong></p>
+                  <p className="character">Director</p>
+                </li>
+                <li className="profile">
+                  <p><strong>{producer}</strong></p>
+                  <p className="character">Producer</p>
+                </li>
+                <li className="profile">
+                  <p><strong>{costumes}</strong></p>
+                  <p className="character">Costume & Make-Up</p>
+                </li>
+              </ul>
           </div>
         </div>
-        <MovieTrailer id={id} />
+        <MovieCast movie={movie}/>
+        <MovieTrailer videoKey={movie?.video_key} />
         <div className="center-links">
           <Link to="/" className="btn-back">
             Go Back

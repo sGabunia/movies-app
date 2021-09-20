@@ -22,9 +22,31 @@ const getMovieDetails = async (id) => {
   return response.data;
 };
 
+const getMovieActorsAndCrew = async (id) => {
+  const response = await axios.get(
+    `${MOVIE_DETAILS_URL}${id}/credits?api_key=${apiKey}`
+  )
+  return response.data
+}
+
+const getMovieReviews = async (id) => {
+  const response = await axios.get(
+    `${MOVIE_DETAILS_URL}${id}/reviews?api_key=${apiKey}`
+  )
+  return response.data.results
+}
+
+const getMovieVideos = async (id) => {
+  const response = await axios.get(
+    `${MOVIE_DETAILS_URL}${id}/videos?api_key=${apiKey}`
+  )
+  return response.data.results[0];
+}
+
+
 const loadMoreMovies = async (id, page) => {
   const response = await axios.get(`${GENRE_BASE_URL}${id}&page=${page}`);
-
+ 
   return response.data.results;
 };
 
@@ -33,6 +55,9 @@ const getAllData = {
   getMoviesByGenre,
   getMovieDetails,
   loadMoreMovies,
+  getMovieActorsAndCrew,
+  getMovieReviews,
+  getMovieVideos,
 };
 
 export default getAllData;
