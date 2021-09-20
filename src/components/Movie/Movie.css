@@ -9,6 +9,13 @@
   padding-bottom: 3rem;
 }
 
+@media(max-width: 710px) {
+  .movie-details__card {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
 .movie-details__card-content {
   display: flex;
   flex-direction: column;
@@ -44,4 +51,12 @@
   border-radius: 4px;
   letter-spacing: 0.2rem;
   text-transform: uppercase;
+}
+
+
+/* video styles */
+@media(max-width: 710px) {
+  iframe {
+    width: 100%;
+  }
 }
