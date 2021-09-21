@@ -1,32 +1,60 @@
-import React, { useEffect } from "react";
+import React, {useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { initializeMovieByDetails } from "../../reducers/movieDetailsReducer";
+import { initializeMovieByDetails, addVote, removeVote} from "../../reducers/movieDetailsReducer";
+import { addMovieToBookmarked, removeMovieFromBookmarked } from "../../reducers/moviesReducer";
 
 import MovieGenres from "./MovieGenres";
 
+import "./Movie.css";
+
 import MovieTrailer from "./MovieTrailer";
 import MovieCast from "./MovieCast";
-
-import "./Movie.css";
+import LikeIcon from "../Icons/LikeIcon"
+import MovieReviews from "./MovieReviews";
+import BookmarkIcon from "../Icons/BookmarkIcon";
 
 const Movie = () => {
   const dispatch = useDispatch();
-  const movie = useSelector(({ movieDetails }) => movieDetails.data);
-
+  const movie = useSelector(({ movieDetails }) => movieDetails.movieInfo);
+  const moviesBookmarkInfo = useSelector(({movies}) => movies)
+  const status = moviesBookmarkInfo.find((bookmark) => bookmark.id === movie.id)?.isBookmarked
+  console.log(status);
+  const [isLiked, setisLiked] = useState(false)
+  const [isBookmarked, setIsBookmarked] = useState(status)
   const id = useParams().id;
 
   useEffect(() => {
     dispatch(initializeMovieByDetails(id));
   }, [dispatch, id]);
 
-  const director = movie?.crew?.find((movie) => movie.department === "Directing").name
-  const producer = movie?.crew?.find((movie) => movie.department === "Production").name
-  const costumes = movie?.crew?.find((movie) => movie.department === "Costume & Make-Up").name
+  const director = movie?.crew?.find((movie) => movie.department === "Directing")?.name || null
+  const producer = movie?.crew?.find((movie) => movie.department === "Production")?.name || null
+  const costumes = movie?.crew?.find((movie) => movie.department === "Costume & Make-Up")?.name || null
+  
+  const handleLikeClick = () => {
+    if(isLiked) {
+      dispatch(removeVote())
+      setisLiked(false)
+      return
+    }
+    dispatch(addVote())
+    setisLiked(true)
+  }
 
- console.log(movie?.crew)
+  const handleBookmarkClick = (id) => {
+    if(isBookmarked) {
+      dispatch(removeMovieFromBookmarked(id))
+      setIsBookmarked(false)
+      return
+    }
+
+    dispatch(addMovieToBookmarked(id))
+    setIsBookmarked(true)
+  }
+ 
   return (
     <section className="movie-details">
       <div className="wrapper">
@@ -55,6 +83,13 @@ const Movie = () => {
                <strong>{movie?.vote_average * 10} %</strong>
                 </div>
               </li>
+              <li>
+                <div>
+                  {movie?.vote_count}
+                  <button onClick={handleLikeClick} className="btn-like"><LikeIcon isLiked={isLiked}/></button>
+                  <button onClick={() => handleBookmarkClick(movie?.id)} className="btn-like"><BookmarkIcon isBookmarked={isBookmarked}/></button> 
+                </div>
+              </li>
             </ul>
             <div className="card-content__info">
               <h3>Overview</h3>
@@ -77,7 +112,9 @@ const Movie = () => {
           </div>
         </div>
         <MovieCast movie={movie}/>
+        <MovieReviews reviews={movie?.reviews}/>
         <MovieTrailer videoKey={movie?.video_key} />
+        
         <div className="center-links">
           <Link to="/" className="btn-back">
             Go Back

@@ -4,8 +4,24 @@ const movieDetailsReducer = (state = {}, {type, data}) => {
   switch (type) {
     case "INIT_MOVIE_DETAILS": {
       return {
-        data,   
+        movieInfo: data   
       };
+    }
+    case "ADD_VOTE": {
+      return {
+        movieInfo: {
+          ...state.movieInfo, 
+        vote_count: state.movieInfo.vote_count + 1
+        }
+      }
+    }
+    case "REMOVE_VOTE": {
+      return {
+        movieInfo: {
+          ...state.movieInfo, 
+        vote_count: state.movieInfo.vote_count - 1
+        }
+      }
     }
     default:
       return state;
@@ -25,5 +41,17 @@ export const initializeMovieByDetails = (id) => {
     });
   };
 };
+
+export const addVote = () => {
+  return {
+    type: "ADD_VOTE",
+  }
+}
+
+export const removeVote = () => {
+  return {
+    type: "REMOVE_VOTE",
+  }
+}
 
 export default movieDetailsReducer;

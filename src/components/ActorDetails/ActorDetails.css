@@ -1,0 +1,6 @@
+.actor-details {
+    display: grid;
+    grid-template-columns: minmax(150px, 25%) 1fr;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}

@@ -6,11 +6,14 @@ import moviesReducer from "./reducers/moviesReducer";
 import moviesByGenreReducer from "./reducers/moviesByGenre";
 import movieDetailsReducer from "./reducers/movieDetailsReducer";
 import toggleBgReducer from "./reducers/toggleBgReducer";
+import actorDetailsReducer from "./reducers/actorDetailsReducer";
+
 
 const reducer = combineReducers({
   movies: moviesReducer,
   moviesByGenre: moviesByGenreReducer,
   movieDetails: movieDetailsReducer,
+  actorDetails: actorDetailsReducer,
   isDarkMode: toggleBgReducer,
 });
 

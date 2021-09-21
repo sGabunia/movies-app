@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { initializeMovies } from "./reducers/moviesReducer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
+import "./App.css";
+
+
 import Header from "./components/Header/Header";
 import MainContent from "./components/MainContent/MainContent";
 import TvShows from "./components/TvShows/TvShows";
@@ -15,8 +18,7 @@ import ChilldrenShows from "./components/ChildrenShows/ChilldrenShows";
 import Footer from "./components/Footer/Footer";
 import Movie from "./components/Movie/Movie";
 import MoviesByGenreList from "./components/MovieByGenreList/MoviesByGenreList";
-
-import "./App.css";
+import ActorDetails from "./components/ActorDetails/ActorDetails";
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +50,9 @@ function App() {
           </Route>
           <Route exact path="/genre/:id">
             <MoviesByGenreList />
+          </Route>
+          <Route exact path="/actor/:id">
+            <ActorDetails />
           </Route>
           <Route path="/tv">
             <TvShows />
