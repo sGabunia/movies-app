@@ -13,8 +13,6 @@ SwiperCore.use([Navigation]);
 const Gallery = () => {
   const movies = useSelector(({ movies }) => movies.slice(0, 15));
 
-  console.log(movies);
-
   return (
     <main className="gallery">
       <div className="wrapper">

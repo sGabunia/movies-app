@@ -4,10 +4,22 @@ import "../../App.css";
 
 const ChilldrenShows = () => {
   const movies = useSelector(({movies}) => movies.filter((movie) => movie.isBookmarked === true))
-  console.log(movies);
+
+  if(movies.length === 0) {
+    return <div className="imposter">
+      <h2>You have no bookmarked movie</h2>
+    </div>
+  }
+
   return (
     <div className="imposter">
-      <h2>Shows for children</h2>
+      <div className="wrapper">
+        <div style={{display: "flex", flexWrap: "wrap" , gap: "1rem"}}>
+          {movies.map((movie) => {
+            return <img  key={movie.id} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt="bookmarged movie poster" />
+          })}
+        </div>   
+      </div>
     </div>
   );
 };

@@ -1,29 +1,25 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import "./Movie.css"
+import PersonWrapper from './PersonWrapper'
+import ScrollbarPanel from './ScrollbarPanel'
+
+
+const Actor = ({actor}) => {
+    return (
+       <PersonWrapper imageSrc={actor?.profile_path} title={actor.name} character={actor.character} id={actor.id}/>
+    )
+}
 
 const MovieCast = ({movie}) => {
-
     return (
         <section className="actors-panel">
-            <h3 className="actors-panel-title">Top Billed cast</h3>
-            <ul className="actors-panel-list">
-                {movie?.cast?.slice(0, 10).map((actor, i) => {
+            <ScrollbarPanel title="Top Billed cast">
+            {movie?.cast?.slice(0, 10).map((actor, i) => {
                     return (
-                        <li className="actor" key={i}>
-                           <Link to={`/actor/${actor.id}`}>
-                                <img src={actor.profile_path ? `https://image.tmdb.org/t/p/w185${actor?.profile_path}` : `https://via.placeholder.com/150
-
-C/O https://placeholder.com/`} alt="movies's actor" />
-                            </Link>
-                            <div style={{padding: 10}}>
-                            <p><strong><Link to={`/actor/${actor.id}`}>{actor.name}</Link></strong></p>
-                            <p className="character">{actor.character}</p>
-                            </div>
-                        </li>
+                        <Actor actor={actor} key={i}/>
                     )
                 })}
-            </ul>
+            </ScrollbarPanel>
         </section>
     )
 }

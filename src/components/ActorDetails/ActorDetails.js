@@ -4,6 +4,9 @@ import { useSelector, useDispatch } from "react-redux";
 import { initializeActorDetails } from "../../reducers/actorDetailsReducer"
 import "./ActorDetails.css"
 
+import ScrollbarPannel from "../Movie/ScrollbarPanel"
+import PersonWrapper from '../Movie/PersonWrapper';
+
 const ActorDetails = () => {
     const actor = useSelector(({actorDetails}) => actorDetails.data)
     const dispatch = useDispatch()
@@ -13,7 +16,7 @@ const ActorDetails = () => {
         dispatch(initializeActorDetails(id))
     }, [id, dispatch])
 
-    console.log(actor);
+    
     return (
         <div className="imposter">
             <div className="wrapper">
@@ -29,12 +32,13 @@ const ActorDetails = () => {
                         </div>          
                     </div>
                 </div>
-                <div className="actor-movies">
-                    <h3>Known For</h3>
-                    <ul>
-
-                    </ul>
-                </div>
+                <ScrollbarPannel title="Known For">
+                    {actor?.credits?.slice(0, 10).map((movie) => {
+                        return (
+                            <PersonWrapper key={movie.id} title={movie?.title} character={movie?.character} imageSrc={movie?.poster_path} id={movie.id}/>
+                        )
+                    })}
+                </ScrollbarPannel>
             </div>
         </div>
     )

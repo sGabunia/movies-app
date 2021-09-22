@@ -3,8 +3,8 @@ import { useDispatch } from "react-redux";
 
 import { useSelector } from "react-redux";
 import { useParams, Link } from "react-router-dom";
-import { initializeMovieByDetails, addVote, removeVote} from "../../reducers/movieDetailsReducer";
-import { addMovieToBookmarked, removeMovieFromBookmarked } from "../../reducers/moviesReducer";
+import { initializeMovieByDetails} from "../../reducers/movieDetailsReducer";
+import {addVote, removeVote, addMovieToBookmarked, removeMovieFromBookmarked} from "../../reducers/moviesReducer"
 
 import MovieGenres from "./MovieGenres";
 
@@ -17,14 +17,15 @@ import MovieReviews from "./MovieReviews";
 import BookmarkIcon from "../Icons/BookmarkIcon";
 
 const Movie = () => {
+  const id = Number(useParams().id);
   const dispatch = useDispatch();
+
   const movie = useSelector(({ movieDetails }) => movieDetails.movieInfo);
-  const moviesBookmarkInfo = useSelector(({movies}) => movies)
-  const status = moviesBookmarkInfo.find((bookmark) => bookmark.id === movie.id)?.isBookmarked
-  console.log(status);
-  const [isLiked, setisLiked] = useState(false)
-  const [isBookmarked, setIsBookmarked] = useState(status)
-  const id = useParams().id;
+  const selectedMovie = useSelector(({movies}) => movies.find((movie) => movie.id === id))
+
+  const [isLiked, setisLiked] = useState(selectedMovie?.isLiked)
+  const [isBookmarked, setIsBookmarked] = useState(selectedMovie?.isBookmarked)
+  
 
   useEffect(() => {
     dispatch(initializeMovieByDetails(id));
@@ -34,13 +35,13 @@ const Movie = () => {
   const producer = movie?.crew?.find((movie) => movie.department === "Production")?.name || null
   const costumes = movie?.crew?.find((movie) => movie.department === "Costume & Make-Up")?.name || null
   
-  const handleLikeClick = () => {
+  const handleLikeClick = (id) => {
     if(isLiked) {
-      dispatch(removeVote())
+      dispatch(removeVote(id))
       setisLiked(false)
       return
     }
-    dispatch(addVote())
+    dispatch(addVote(id))
     setisLiked(true)
   }
 
@@ -79,15 +80,15 @@ const Movie = () => {
 
             <ul className="card-content__score">
               <li>
-                <div className="imbd-score">
-               <strong>{movie?.vote_average * 10} %</strong>
+                <div className="ratings">
+                  {selectedMovie?.vote_count}
+                  <button onClick={() => handleLikeClick(movie?.id)} className="btn-like"><LikeIcon isLiked={isLiked}/></button>
+                  <button onClick={() => handleBookmarkClick(movie?.id)} className="btn-like"><BookmarkIcon isBookmarked={isBookmarked}/></button> 
                 </div>
               </li>
               <li>
-                <div>
-                  {movie?.vote_count}
-                  <button onClick={handleLikeClick} className="btn-like"><LikeIcon isLiked={isLiked}/></button>
-                  <button onClick={() => handleBookmarkClick(movie?.id)} className="btn-like"><BookmarkIcon isBookmarked={isBookmarked}/></button> 
+                <div className="imbd-score">
+                    <strong>{movie?.vote_average * 10} %</strong>
                 </div>
               </li>
             </ul>

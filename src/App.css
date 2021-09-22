@@ -46,6 +46,7 @@ a:not([class]) {
 
 a {
   display: inline-block;
+  color: inherit;
   text-decoration: none;
 }
 
@@ -94,6 +95,7 @@ select {
   display: grid;
   place-items: center;
   flex-grow: 1;
+  padding: 1.5rem;
 }
 
 .container {

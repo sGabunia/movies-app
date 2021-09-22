@@ -4,7 +4,7 @@ const moviesReducer = (state = [], action) => {
   switch (action.type) {
     case "INIT_MOVIES":{
       const newMovies = action.data.map((movie) => {
-        return { ...movie, isBookmarked: false };
+        return { ...movie, isBookmarked: false, isLiked: false };
       });
       return newMovies;
     }
@@ -15,8 +15,23 @@ const moviesReducer = (state = [], action) => {
         return newMovieList
     }
     case "REMOVE_MOVIE_FROM_BOOKMARKED": {
-        return state.filter((movie) => movie.id !== action.payload.id)
+      const bookmarkedMovie = state.find((movie) => movie.id === action.payload.id)
+      const changedIsBookmaredStatus = {...bookmarkedMovie, isBookmarked: false}
+      const newMovieList = state.map((movie) => movie.id !== action.payload.id ? movie : changedIsBookmaredStatus )
+      return newMovieList
     }
+    case "ADD_VOTE": {
+      const likedMovie = state.find((movie) => movie.id === action.payload.id)
+      const changedIsLikedStatus = {...likedMovie, isLiked: true, vote_count: likedMovie?.vote_count + 1}
+      const newMovieList = state.map((movie) => movie.id !== action.payload.id ? movie : changedIsLikedStatus )
+      return newMovieList
+      }
+    case "REMOVE_VOTE": {
+      const likedMovie = state.find((movie) => movie.id === action.payload.id)
+      const changedIsLikedStatus = {...likedMovie, isLiked: false, vote_count: likedMovie?.vote_count - 1}
+      const newMovieList = state.map((movie) => movie.id !== action.payload.id ? movie : changedIsLikedStatus )
+      return newMovieList
+    } 
     default:
       return state;
   }
@@ -34,6 +49,21 @@ export const initializeMovies = () => {
     });
   };
 };
+
+export const addVote = (id) => {
+  return {
+    type: "ADD_VOTE",
+    payload: {id}
+  }
+}
+
+export const removeVote = (id) => {
+  return {
+    type: "REMOVE_VOTE",
+    payload: {id}
+  }
+}
+
 
 export const addMovieToBookmarked = (id) => {
   return {

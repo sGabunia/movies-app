@@ -77,6 +77,18 @@
   border-radius: 50%;
 }
 
+.card-content__score {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.ratings {
+  display: flex;
+  align-items: center;
+}
+
 .imbd-score strong {
   font-size: 1.3rem;
 }
@@ -94,6 +106,10 @@
 
 .character {
   font-size: 0.9rem;
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* actors panel */
@@ -109,6 +125,12 @@
   overflow-x: scroll;
 }
 
+.title-p {
+  width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 /* style scrollbar */
 .actors-panel-list::-webkit-scrollbar {
   width: 0.5em;

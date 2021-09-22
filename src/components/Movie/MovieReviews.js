@@ -3,7 +3,7 @@ import Review from './Review'
 
 const TabPanel = ({children, value, index}) => {
     return <div style={{display: value === index ? "block" : "none"}}>
-            <p>{children}</p>
+            {children}
     </div>
 }
 
