@@ -1,12 +1,15 @@
 import movieService from "../services/movies";
 
-const moviesReducer = (state = [], action) => {
+const moviesReducer = (state = {movies: [], isLoading: false}, action) => {
   switch (action.type) {
-    case "INIT_MOVIES":{
+    case "INIT_MOVIES": {
+      return {...state, isLoading: true}
+    }
+    case "INIT_MOVIES_SUCCESS":{
       const newMovies = action.data.map((movie) => {
         return { ...movie, isBookmarked: false, isLiked: false };
       });
-      return newMovies;
+      return {movies: newMovies, isLoading: false}
     }
     case "BOOKMARK_MOVIE": {
         const bookmarkedMovie = state.find((movie) => movie.id === action.payload.id)
@@ -41,10 +44,11 @@ const moviesReducer = (state = [], action) => {
 
 export const initializeMovies = () => {
   return async (dispatch) => {
+    dispatch({type: "INIT_MOVIES"})
     const movies = await movieService.getAll();
 
     dispatch({
-      type: "INIT_MOVIES",
+      type: "INIT_MOVIES_SUCCESS",
       data: movies,
     });
   };

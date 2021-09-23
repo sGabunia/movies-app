@@ -6,6 +6,7 @@ import "./ActorDetails.css"
 
 import ScrollbarPannel from "../Movie/ScrollbarPanel"
 import PersonWrapper from '../Movie/PersonWrapper';
+import Spinner from '../Spinner/Spinner';
 
 
 const ReadMore = ({ children }) => {
@@ -25,7 +26,7 @@ const ReadMore = ({ children }) => {
   };
 
 const ActorDetails = () => {
-    const actor = useSelector(({actorDetails}) => actorDetails.data)
+    const {actor, status} = useSelector(({actorDetails}) => actorDetails)
     const dispatch = useDispatch()
     const id = useParams().id
 
@@ -33,34 +34,40 @@ const ActorDetails = () => {
         dispatch(initializeActorDetails(id))
     }, [id, dispatch])
 
-    
-    return (
-        <div className="imposter">
-            <div className="wrapper">
-                <div className="actor-details">
-                    <div className="actor-details__image">
-                        <img src={`https://image.tmdb.org/t/p/w185${actor?.profile_path}`} alt="actor profile" style={{width: "100%"}}/>
+    if(status === "idle" || status === "pending") {
+        return <Spinner />
+    }
+
+    if(status === "resolved") {
+        return (
+            <div className="imposter">
+                <div className="wrapper">
+                    <div className="actor-details">
+                        <div className="actor-details__image">
+                            <img src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`} alt="actor profile" style={{width: "100%"}}/>
+                        </div>
+                        <div className="actor-details__main">
+                            <h2>{actor?.name}</h2>
+                            <div className="actor-details__biography">
+                            <h3>Biography</h3>
+                            <ReadMore>
+                                {actor?.biography}   
+                            </ReadMore>
+                            </div>          
+                        </div>
                     </div>
-                    <div className="actor-details__main">
-                        <h2>{actor?.name}</h2>
-                        <div className="actor-details__biography">
-                        <h3>Biography</h3>
-                        <ReadMore>
-                            {actor?.biography}   
-                        </ReadMore>
-                        </div>          
-                    </div>
+                    <ScrollbarPannel title="Known For">
+                        {actor.credits?.slice(0, 10).map((movie) => {
+                            return (
+                                <PersonWrapper key={movie.id} title={movie.title} character={movie.character} imageSrc={movie.poster_path} id={movie.id}/>
+                            )
+                        })}
+                    </ScrollbarPannel>
                 </div>
-                <ScrollbarPannel title="Known For">
-                    {actor?.credits?.slice(0, 10).map((movie) => {
-                        return (
-                            <PersonWrapper key={movie.id} title={movie?.title} character={movie?.character} imageSrc={movie?.poster_path} id={movie.id}/>
-                        )
-                    })}
-                </ScrollbarPannel>
             </div>
-        </div>
-    )
+        )
+    }
+
 }
 
 export default ActorDetails

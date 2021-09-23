@@ -11,7 +11,7 @@ import "./Gallery.css";
 SwiperCore.use([Navigation]);
 
 const Gallery = () => {
-  const movies = useSelector(({ movies }) => movies.slice(0, 15));
+  const movies = useSelector(({ movies }) => movies.movies.slice(0, 15));
 
   return (
     <main className="gallery">

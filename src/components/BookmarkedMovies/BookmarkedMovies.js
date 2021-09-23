@@ -5,11 +5,11 @@ import RemoveIcon from "../Icons/RemoveIcon";
 import "./BookmarkedMovies.css"
 
 const BookmarkedMovies = () => {
-  const movies = useSelector(({movies}) => movies.filter((movie) => movie.isBookmarked === true))
+  const movies = useSelector(({movies}) => movies.movies.filter((movie) => movie.isBookmarked === true))
 
 
 
-  if(!movies || movies.length === 0) {
+  if(movies === undefined || movies.length === 0) {
     return <div className="imposter">
       <h2>You have no bookmarked movie</h2>
     </div>

@@ -7,6 +7,7 @@ import moviesByGenreReducer from "./reducers/moviesByGenre";
 import movieDetailsReducer from "./reducers/movieDetailsReducer";
 import toggleBgReducer from "./reducers/toggleBgReducer";
 import actorDetailsReducer from "./reducers/actorDetailsReducer";
+import tvShowsReducer from "./reducers/tvShowsReducer";
 
 
 const reducer = combineReducers({
@@ -14,6 +15,7 @@ const reducer = combineReducers({
   moviesByGenre: moviesByGenreReducer,
   movieDetails: movieDetailsReducer,
   actorDetails: actorDetailsReducer,
+  tvShows: tvShowsReducer,
   isDarkMode: toggleBgReducer,
 });
 

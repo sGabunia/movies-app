@@ -10,11 +10,16 @@ import "swiper/components/pagination/pagination.min.css";
 import "swiper/components/effect-cube/effect-cube.min.css";
 
 import "./Slider.css";
+import Spinner from "../Spinner/Spinner";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Slider = () => {
-  const movies = useSelector(({ movies }) => movies);
+  const {movies, isLoading} = useSelector(({ movies }) => movies);
+
+  if(isLoading) {
+    return <Spinner />
+  }
 
   return (
     <section className="slider" style={{ position: "relative" }}>
