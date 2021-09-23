@@ -14,7 +14,7 @@ import TvShows from "./components/TvShows/TvShows";
 import Films from "./components/Films/Films";
 import Series from "./components/Series/Series";
 import Cinemania from "./components/Cinemania/Cinemania";
-import ChilldrenShows from "./components/ChildrenShows/ChilldrenShows";
+import BookmarkedMovies from "./components/BookmarkedMovies/BookmarkedMovies";
 import Footer from "./components/Footer/Footer";
 import Movie from "./components/Movie/Movie";
 import MoviesByGenreList from "./components/MovieByGenreList/MoviesByGenreList";
@@ -67,7 +67,7 @@ function App() {
             <Cinemania />
           </Route>
           <Route path="/children">
-            <ChilldrenShows />
+            <BookmarkedMovies />
           </Route>
         </Switch>
 

@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router'
 import { useSelector, useDispatch } from "react-redux";
 import { initializeActorDetails } from "../../reducers/actorDetailsReducer"
@@ -7,11 +7,28 @@ import "./ActorDetails.css"
 import ScrollbarPannel from "../Movie/ScrollbarPanel"
 import PersonWrapper from '../Movie/PersonWrapper';
 
+
+const ReadMore = ({ children }) => {
+    const text = children;
+    const [isReadMore, setIsReadMore] = useState(true);
+    const toggleReadMore = () => {
+      setIsReadMore(!isReadMore);
+    };
+    return (
+      <p className="text">
+        {isReadMore ? text?.slice(0, 300) : text}
+        <span onClick={toggleReadMore} className="read-or-hide">
+          {isReadMore ? "...read more" : " show less"}
+        </span>
+      </p>
+    );
+  };
+
 const ActorDetails = () => {
     const actor = useSelector(({actorDetails}) => actorDetails.data)
     const dispatch = useDispatch()
     const id = useParams().id
-    
+
     useEffect(() => {
         dispatch(initializeActorDetails(id))
     }, [id, dispatch])
@@ -28,7 +45,9 @@ const ActorDetails = () => {
                         <h2>{actor?.name}</h2>
                         <div className="actor-details__biography">
                         <h3>Biography</h3>
-                        <p>{actor?.biography.slice(0, 700) || "There is no biography on this actor"}</p>
+                        <ReadMore>
+                            {actor?.biography}   
+                        </ReadMore>
                         </div>          
                     </div>
                 </div>

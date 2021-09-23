@@ -1,8 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import "../../App.css";
+import RemoveIcon from "../Icons/RemoveIcon";
+import "./BookmarkedMovies.css"
 
-const ChilldrenShows = () => {
+const BookmarkedMovies = () => {
   const movies = useSelector(({movies}) => movies.filter((movie) => movie.isBookmarked === true))
 
   if(movies.length === 0) {
@@ -16,7 +18,10 @@ const ChilldrenShows = () => {
       <div className="wrapper">
         <div style={{display: "flex", flexWrap: "wrap" , gap: "1rem"}}>
           {movies.map((movie) => {
-            return <img  key={movie.id} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt="bookmarged movie poster" />
+            return <div className="bookmarked-image">
+               <img  key={movie.id} src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`} alt="bookmarged movie poster" />
+               <RemoveIcon id={movie.id}/>
+            </div>
           })}
         </div>   
       </div>
@@ -24,4 +29,4 @@ const ChilldrenShows = () => {
   );
 };
 
-export default ChilldrenShows;
+export default BookmarkedMovies;

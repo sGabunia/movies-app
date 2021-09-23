@@ -4,3 +4,14 @@
     gap: 1.5rem;
     padding: 2rem 0;
 }
+    
+  .text{
+    display: inline;
+    width: 100%;
+  }
+    
+  .read-or-hide{
+    color: rgb(22, 20, 20);
+    cursor: pointer;
+    font-weight: bolder;
+  }

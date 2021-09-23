@@ -21,7 +21,7 @@ export const initializeMovieByDetails = (id) => {
 
    dispatch({
       type: "INIT_MOVIE_DETAILS",
-      data: {...movieDetails, ...movieCastDetails, reviews: movieReviews, video_key: movieVideos.key},
+      data: {...movieDetails, ...movieCastDetails, reviews: movieReviews, video_key: movieVideos?.key},
     });
   };
 };

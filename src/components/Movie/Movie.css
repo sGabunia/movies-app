@@ -204,6 +204,13 @@
   overflow: hidden;
 }
 
+.show-reviews {
+  margin-top: 1rem;
+  font-size: 1.3rem;
+  font-weight: bolder;
+  cursor: pointer;
+}
+
 /* style likes */
 
 .btn-like {
