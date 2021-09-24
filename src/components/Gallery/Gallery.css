@@ -56,6 +56,5 @@
 
 /* conditionally change divs position, which appears on hover*/
 .swiper-slide:not(.swiper-slide-next, .swiper-slide-active) .hovered-movie {
-  position: absolute;
   left: -205%;
 }

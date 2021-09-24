@@ -53,7 +53,11 @@ const ActorDetails = () => {
               <h2>{actor.name}</h2>
               <div className="actor-details__biography">
                 <h3>Biography</h3>
-                <ReadMore>{actor?.biography}</ReadMore>
+                {actor.biography ? (
+                  <ReadMore>{actor?.biography}</ReadMore>
+                ) : (
+                  <p>There is no info about {actor.name}</p>
+                )}
               </div>
             </div>
           </div>
