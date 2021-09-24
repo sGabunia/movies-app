@@ -9,7 +9,7 @@ const navIcons = [
   { id: 2, title: "Films", icon: <FilmsIcon /> },
   { id: 3, title: "Series", icon: <SeriesIcon /> },
   { id: 4, title: "Cinemania", icon: <CinemaniaIcon /> },
-  { id: 5, title: "Children", icon: <ChildrenShowIcon /> },
+  { id: 5, title: "Bookmarked", icon: <ChildrenShowIcon /> },
 ];
 
 export const genres = [

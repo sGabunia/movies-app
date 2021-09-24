@@ -18,7 +18,7 @@ const Gallery = () => {
     <main className="gallery">
       <div className="wrapper">
         <div>
-          <h2 className="gallery__title">popular movies</h2>
+          <h2 className="gallery-title">popular movies</h2>
         </div>
         <Swiper
           spaceBetween={10}

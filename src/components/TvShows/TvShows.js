@@ -14,7 +14,7 @@ const TvShows = () => {
     dispatch(fetchShows());
   }, [dispatch]);
 
-  if (isLoading) {
+  if (isLoading === "idle" || isLoading === "pending") {
     return (
       <div>
         <Spinner />

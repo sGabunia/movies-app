@@ -1,15 +1,18 @@
 import movieService from "../services/movies";
 
-const tvShowsReducer = (state = { tvShows: [], loading: false }, action) => {
+const tvShowsReducer = (
+  state = { tvShows: null, isLoading: "idle" },
+  action
+) => {
   switch (action.type) {
     case "GET_TV_SHOWS": {
-      return { ...state, loading: true };
+      return { ...state, isLoading: "pending" };
     }
     case "GET_TV_SHOWS_SUCCESS": {
       const newShows = action.data.map((show) => {
         return { ...show, isBookmarked: false, isLiked: false };
       });
-      return { tvShows: newShows, loading: false };
+      return { tvShows: newShows, isLoading: "resolved" };
     }
     default:
       return state;

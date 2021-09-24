@@ -28,7 +28,7 @@
   gap: 1rem;
 }
 
-.card-content__header {
+.movie-details__card-content-header {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -36,7 +36,6 @@
 
 .genre {
   display: inline-block;
-
   margin-right: 1rem;
   margin-bottom: 1rem;
   padding: 0.25rem 0.75rem;
@@ -76,7 +75,7 @@
   border-radius: 50%;
 }
 
-.card-content__score {
+.movie-details__card-content-score {
   display: flex;
   justify-content: flex-start;
   align-items: center;

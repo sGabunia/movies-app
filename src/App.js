@@ -44,7 +44,7 @@ function App() {
           <Route exact path="/">
             <MainContent />
           </Route>
-          <Route path="/details/:id">
+          <Route path="/movieDetails/:id">
             <Movie />
           </Route>
           <Route exact path="/genre/:id">
@@ -65,7 +65,7 @@ function App() {
           <Route path="/cinemania">
             <Cinemania />
           </Route>
-          <Route path="/children">
+          <Route path="/bookmarked">
             <BookmarkedMovies />
           </Route>
         </Switch>

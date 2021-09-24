@@ -35,8 +35,6 @@ const Movie = () => {
   const [isLiked, setisLiked] = useState(selectedMovie?.isLiked);
   const [isBookmarked, setIsBookmarked] = useState(selectedMovie?.isBookmarked);
 
-  console.log(movie);
-
   useEffect(() => {
     dispatch(initializeMovieByDetails(id));
   }, [dispatch, id]);
@@ -86,13 +84,14 @@ const Movie = () => {
                 <img
                   src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
                   alt="film poster"
+                  style={{ borderRadius: "8px" }}
                 />
               ) : (
                 "hello"
               )}
             </div>
-            <div className="card-content">
-              <div className="card-content__header">
+            <div className="movie-details__card-content">
+              <div className="movie-details__card-content-header">
                 <h2>
                   {movie.original_title} ({movie.release_date?.slice(0, 4)})
                 </h2>
@@ -101,7 +100,7 @@ const Movie = () => {
                 </p>
               </div>
 
-              <ul className="card-content__score">
+              <ul className="movie-details__card-content-score">
                 <li>
                   <div className="ratings">
                     {selectedMovie?.vote_count}

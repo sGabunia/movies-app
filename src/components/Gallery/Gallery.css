@@ -2,7 +2,7 @@
   padding: 2rem 0;
 }
 
-.gallery__title {
+.gallery-title {
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
@@ -49,7 +49,7 @@
   font-size: 0.8rem;
 }
 
-.data-highlight {
+.hovered-movie__data-highlight {
   color: rgb(26, 144, 207);
 }
 

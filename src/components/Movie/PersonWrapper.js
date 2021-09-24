@@ -2,7 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Movie.css";
 
-const PersonWrapper = ({ title, imageSrc, id, character = "" }) => {
+const PersonWrapper = ({
+  title,
+  imageSrc,
+  id,
+  character = "",
+  category = "actor",
+}) => {
   return (
     <li className="actor">
       <Link to={`/actor/${id}`}>
@@ -19,7 +25,7 @@ const PersonWrapper = ({ title, imageSrc, id, character = "" }) => {
       <div style={{ padding: 10 }}>
         <p className="title-p">
           <strong>
-            <Link to={`/actor/${id}`}>{title}</Link>
+            <Link to={`/${category}/${id}`}>{title}</Link>
           </strong>
         </p>
         <p className="character">{character}</p>

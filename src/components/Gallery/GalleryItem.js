@@ -14,7 +14,7 @@ const Gall = ({ movie }) => {
       onMouseLeave={() => setIsShown(false)}
     >
       {" "}
-      <Link to={`/details/${movie.id}`}>
+      <Link to={`/movieDetails/${movie.id}`}>
         <img
           src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
           alt="film poster"
@@ -37,7 +37,6 @@ const Gall = ({ movie }) => {
           <div
             className="hovered-movie"
             style={{
-              overflow: "auto",
               backgroundColor: bgMode ? "rgb(40, 44, 51)" : "#fff",
               color: bgMode ? "rgb(213, 221, 245)" : "rgb(130, 130, 130)",
             }}
@@ -46,17 +45,21 @@ const Gall = ({ movie }) => {
             <ul className="hovered-movie__details">
               <li>
                 Language:{" "}
-                <span className="data-highlight">
+                <span className="hovered-movie__data-highlight">
                   {movie.original_language.toUpperCase()}
                 </span>
               </li>
               <li>
                 Release Date:{" "}
-                <span className="data-highlight">{movie.release_date}</span>
+                <span className="hovered-movie__data-highlight">
+                  {movie.release_date}
+                </span>
               </li>
               <li>
                 IMBD Rating:{" "}
-                <span className="data-highlight">{movie.vote_average}</span>
+                <span className="hovered-movie__data-highlight">
+                  {movie.vote_average}
+                </span>
               </li>
               <li style={{ marginTop: "1rem" }}>
                 Overview:{" "}

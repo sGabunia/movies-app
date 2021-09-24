@@ -1,4 +1,10 @@
-.bookmarked-image {
+.bookmarked-movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.bookmarked-movies__image {
   position: relative;
 }
 

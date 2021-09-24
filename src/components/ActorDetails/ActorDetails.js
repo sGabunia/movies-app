@@ -46,7 +46,7 @@ const ActorDetails = () => {
               <img
                 src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
                 alt="actor profile"
-                style={{ width: "100%" }}
+                style={{ width: "100%", borderRadius: "8px" }}
               />
             </div>
             <div className="actor-details__main">
@@ -70,6 +70,7 @@ const ActorDetails = () => {
                   character={movie.character}
                   imageSrc={movie.poster_path}
                   id={movie.id}
+                  category="movieDetails"
                 />
               );
             })}
