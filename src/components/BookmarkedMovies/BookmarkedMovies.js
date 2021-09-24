@@ -24,12 +24,12 @@ const BookmarkedMovies = () => {
         <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
           {movies.map((movie) => {
             return (
-              <div className="bookmarked-image" key={movie?.id}>
+              <div className="bookmarked-image" key={movie.id}>
                 <img
                   src={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
                   alt="bookmarged movie poster"
                 />
-                <RemoveIcon id={movie?.id} />
+                <RemoveIcon id={movie.id} />
               </div>
             );
           })}

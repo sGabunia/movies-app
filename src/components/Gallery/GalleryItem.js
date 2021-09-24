@@ -8,6 +8,7 @@ const Gall = ({ movie }) => {
 
   return (
     <div
+      className="gallery-movie"
       onMouseEnter={() => setIsShown(true)}
       onMouseLeave={() => setIsShown(false)}
     >
@@ -17,7 +18,7 @@ const Gall = ({ movie }) => {
           src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
           alt="film poster"
         />
-        {isShown ? (
+        {isShown && (
           <div
             className="hovered-movie"
             style={{
@@ -48,7 +49,7 @@ const Gall = ({ movie }) => {
               </li>
             </ul>
           </div>
-        ) : null}
+        )}
       </Link>
     </div>
   );

@@ -7,16 +7,28 @@
   text-transform: uppercase;
 }
 
+.gallery-movie {
+  position: relative;
+  border-radius: 8px;
+}
+
+.gallery-movie img {
+  border-radius: 8px;
+}
+
 .hovered-movie {
   position: absolute;
-  top: 0;
-  left: 102%;
+  top: -20px;
+  left: 105%;
   width: 200%;
+  height: calc(100% + 2rem);
   min-height: 310px;
   padding: 0.65rem;
   border-radius: 5px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   opacity: 0.97;
   z-index: 100000;
+  overflow: auto;
 }
 
 .hovered-movie__title {
@@ -35,4 +47,15 @@
 
 .data-highlight {
   color: rgb(26, 144, 207);
+}
+
+/* swiper modifier class */
+.swiper-container.swiper-movies {
+  padding: 2rem 0;
+}
+
+/* conditionally change divs position, which appears on hover*/
+.swiper-slide:not(.swiper-slide-next, .swiper-slide-active) .hovered-movie {
+  position: absolute;
+  left: -205%;
 }

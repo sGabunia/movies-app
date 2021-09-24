@@ -50,7 +50,7 @@ const ActorDetails = () => {
               />
             </div>
             <div className="actor-details__main">
-              <h2>{actor?.name}</h2>
+              <h2>{actor.name}</h2>
               <div className="actor-details__biography">
                 <h3>Biography</h3>
                 <ReadMore>{actor?.biography}</ReadMore>
