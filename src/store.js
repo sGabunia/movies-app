@@ -9,7 +9,6 @@ import toggleBgReducer from "./reducers/toggleBgReducer";
 import actorDetailsReducer from "./reducers/actorDetailsReducer";
 import tvShowsReducer from "./reducers/tvShowsReducer";
 
-
 const reducer = combineReducers({
   movies: moviesReducer,
   moviesByGenre: moviesByGenreReducer,

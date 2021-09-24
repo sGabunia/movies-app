@@ -1,10 +1,10 @@
 .bookmarked-image {
-    position: relative;
+  position: relative;
 }
 
 .remove-bookmarked {
-    position: absolute;
-    top: 0.7rem;
-    right: 0.7rem;
-    cursor: pointer;
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  cursor: pointer;
 }

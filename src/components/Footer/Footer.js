@@ -1,6 +1,7 @@
 import React from "react";
-import AdultContentIcon from "../Icons/AdultContentIcon";
 import "./Footer.css";
+
+import AdultContentIcon from "../Icons/AdultContentIcon";
 
 const Footer = () => {
   return (

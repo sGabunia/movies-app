@@ -7,7 +7,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
 
-
 import Header from "./components/Header/Header";
 import MainContent from "./components/MainContent/MainContent";
 import TvShows from "./components/TvShows/TvShows";

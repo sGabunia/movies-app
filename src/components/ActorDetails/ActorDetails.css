@@ -1,16 +1,16 @@
 .actor-details {
-    display: grid;
-    grid-template-columns: minmax(150px, 25%) 1fr;
-    gap: 1.5rem;
-    padding: 2rem 0;
+  display: grid;
+  grid-template-columns: minmax(150px, 25%) 1fr;
+  gap: 1.5rem;
+  padding: 2rem 0;
 }
-    
-  .text{
-    display: inline;
-    width: 100%;
-  }
-    
-  .read-or-hide{
-    cursor: pointer;
-    font-weight: bolder;
-  }
+
+.text {
+  display: inline;
+  width: 100%;
+}
+
+.read-or-hide {
+  cursor: pointer;
+  font-weight: bolder;
+}

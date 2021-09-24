@@ -2,11 +2,12 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from "swiper/react";
 import SwiperCore, { Navigation } from "swiper";
-import GalleryItem from "./GalleryItem";
 
 import "swiper/swiper.min.css";
 import "swiper/components/navigation/navigation.min.css";
 import "./Gallery.css";
+
+import GalleryItem from "./GalleryItem";
 
 SwiperCore.use([Navigation]);
 

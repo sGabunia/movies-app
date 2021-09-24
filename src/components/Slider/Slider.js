@@ -15,10 +15,10 @@ import Spinner from "../Spinner/Spinner";
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
 const Slider = () => {
-  const {movies, isLoading} = useSelector(({ movies }) => movies);
+  const { movies, isLoading } = useSelector(({ movies }) => movies);
 
-  if(isLoading) {
-    return <Spinner />
+  if (isLoading) {
+    return <Spinner />;
   }
 
   return (

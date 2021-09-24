@@ -27,51 +27,50 @@ const getMovieDetails = async (id) => {
 const getMovieActorsAndCrew = async (id) => {
   const response = await axios.get(
     `${MOVIE_DETAILS_URL}${id}/credits?api_key=${apiKey}`
-  )
-  return response.data
-}
+  );
+  return response.data;
+};
 
 const getMovieReviews = async (id) => {
   const response = await axios.get(
     `${MOVIE_DETAILS_URL}${id}/reviews?api_key=${apiKey}`
-  )
-  return response.data.results
-}
+  );
+  return response.data.results;
+};
 
 const getMovieVideos = async (id) => {
   const response = await axios.get(
     `${MOVIE_DETAILS_URL}${id}/videos?api_key=${apiKey}`
-  )
+  );
   return response.data.results[0];
-}
-
+};
 
 const loadMoreMovies = async (id, page) => {
   const response = await axios.get(`${GENRE_BASE_URL}${id}&page=${page}`);
- 
+
   return response.data.results;
 };
 
 const getActorDetails = async (id) => {
   const response = await axios.get(
     `${ACTOR_DETAILS_URL}${id}?api_key=${apiKey}&language=en-US`
-  )
+  );
   return response.data;
-}
+};
 
 const getActorCredits = async (id) => {
   const response = await axios.get(
     `${ACTOR_DETAILS_URL}${id}/movie_credits?api_key=${apiKey}&language=en-US`
-  )
+  );
   return response.data;
-}
+};
 
 const getAllTvShows = async (id) => {
   const response = await axios.get(
     `${BASE_URL}tv/top_rated?api_key=${apiKey}&language=en-US`
-  )
+  );
   return response.data.results;
-}
+};
 
 const getAllData = {
   getAll,
@@ -83,7 +82,7 @@ const getAllData = {
   getMovieVideos,
   getActorDetails,
   getActorCredits,
-  getAllTvShows
+  getAllTvShows,
 };
 
 export default getAllData;
