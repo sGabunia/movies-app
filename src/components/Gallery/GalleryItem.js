@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import PlayVideoIcon from "../Icons/PlayVideoIcon";
 
 const Gall = ({ movie }) => {
   const bgMode = useSelector(({ isDarkMode }) => isDarkMode);
@@ -18,6 +19,20 @@ const Gall = ({ movie }) => {
           src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
           alt="film poster"
         />
+        {isShown && (
+          <div className="hovered-movie__overlay">
+            <div className="hovered-movie__video">
+              <div className="hovered-movie__rounded">
+                <PlayVideoIcon />
+              </div>
+            </div>
+            <div className="hovered-movie__languages">
+              <button>GEO</button>
+              <button>ENG</button>
+              <button>RUS</button>
+            </div>
+          </div>
+        )}
         {isShown && (
           <div
             className="hovered-movie"
