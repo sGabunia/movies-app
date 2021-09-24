@@ -2,27 +2,34 @@ import movieService from "../services/movies";
 
 export const initialState = {
   movies: [],
-  loading: false,
-  hasErrors: false,
+  isloading: "idle",
+  isLoadingMore: "idle",
 };
 
 const moviesByGenreReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "INIT_MOVIES_BY_GENRE": {
+    case "INIT_MOVIES_BY_GENRE_SUCCESS": {
       const newMovies = action.data.map((movie) => {
         return { ...movie };
       });
-      return { movies: newMovies, loading: false, hasErrors: false };
-    }
-    case "LOAD_MORE_MOVIES": {
       return {
-        movies: [...state.movies, ...action.data],
-        loading: false,
-        hasErrors: false,
+        ...state,
+        movies: newMovies,
+        isLoading: "resolved",
       };
     }
-    case "GET_POSTS": {
-      return { ...state, loading: true, hasErrors: false };
+    case "INIT_MOVIES_BY_GENRE": {
+      return { ...state, isLoading: "pending" };
+    }
+    case "LOAD_MORE_MOVIES_SUCCESS": {
+      return {
+        ...state,
+        movies: [...state.movies, ...action.data],
+        isLoadingMore: "resolved",
+      };
+    }
+    case "GET_MORE_MOVIES": {
+      return { ...state, isLoadingMore: "pending" };
     }
 
     default:
@@ -34,9 +41,10 @@ const moviesByGenreReducer = (state = initialState, action) => {
 
 export const initializeMoviesByGenre = (id) => {
   return async (dispatch) => {
+    dispatch({ type: "INIT_MOVIES_BY_GENRE" });
     const movies = await movieService.getMoviesByGenre(id);
     dispatch({
-      type: "INIT_MOVIES_BY_GENRE",
+      type: "INIT_MOVIES_BY_GENRE_SUCCESS",
       data: movies,
     });
   };
@@ -44,10 +52,10 @@ export const initializeMoviesByGenre = (id) => {
 
 export const loadMoreMoviesByGenre = (id, page) => {
   return async (dispatch) => {
-    dispatch({ type: "GET_POSTS" });
+    dispatch({ type: "GET_MORE_MOVIES" });
     const movies = await movieService.loadMoreMovies(id, page);
     dispatch({
-      type: "LOAD_MORE_MOVIES",
+      type: "LOAD_MORE_MOVIES_SUCCESS",
       data: movies,
     });
   };
