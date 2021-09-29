@@ -37,16 +37,16 @@ const ActorDetails = () => {
     return <Spinner />;
   }
 
-  if (status === "resolved") {
-    return (
-      <div className="imposter">
-        <div className="wrapper">
+  return (
+    <div className="wrapper">
+      {status === "resolved" && (
+        <>
           <div className="actor-details">
             <div className="actor-details__image">
               <img
                 src={`https://image.tmdb.org/t/p/w185${actor.profile_path}`}
                 alt="actor profile"
-                style={{ width: "100%", borderRadius: "8px" }}
+                style={{ borderRadius: "8px" }}
               />
             </div>
             <div className="actor-details__main">
@@ -61,24 +61,26 @@ const ActorDetails = () => {
               </div>
             </div>
           </div>
-          <ScrollbarPannel title="Known For">
-            {actor.credits?.slice(0, 10).map((movie) => {
-              return (
-                <PersonWrapper
-                  key={movie.id}
-                  title={movie.title}
-                  character={movie.character}
-                  imageSrc={movie.poster_path}
-                  id={movie.id}
-                  category="movieDetails"
-                />
-              );
-            })}
-          </ScrollbarPannel>
-        </div>
-      </div>
-    );
-  }
+          <section className="actors-panel" style={{ padding: "1.5rem 0" }}>
+            <ScrollbarPannel title="Known For">
+              {actor.credits?.slice(0, 10).map((movie) => {
+                return (
+                  <PersonWrapper
+                    key={movie.id}
+                    title={movie.title}
+                    character={movie.character}
+                    imageSrc={movie.poster_path}
+                    id={movie.id}
+                    category="movieDetails"
+                  />
+                );
+              })}
+            </ScrollbarPannel>
+          </section>
+        </>
+      )}
+    </div>
+  );
 };
 
 export default ActorDetails;

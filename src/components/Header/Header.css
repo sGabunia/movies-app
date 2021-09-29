@@ -29,7 +29,7 @@
   gap: 0.7rem;
 }
 
-@media (max-width: 710px) {
+@media (max-width: 780px) {
   .nav__wrapper {
     display: none;
   }
@@ -87,7 +87,7 @@ path {
   cursor: pointer;
 }
 
-@media (max-width: 710px) {
+@media (max-width: 780px) {
   .mode {
     display: none;
   }
@@ -100,6 +100,7 @@ path {
   height: 20px;
   position: relative;
   cursor: pointer;
+  z-index: 2;
 }
 
 .delayed-hamburger-animation > .bar {
@@ -153,8 +154,43 @@ path {
   z-index: 5;
 }
 
-@media (max-width: 710px) {
+@media (max-width: 780px) {
   .delayed-hamburger-animation {
     display: block;
+  }
+}
+
+/* burger nav styles */
+.burger-nav {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .burger-nav.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .burger-nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(300px);
+    visibility: hidden;
+    z-index: 1;
+    width: 275px;
+    height: 100%;
+    padding-right: 32px;
+    padding-left: 16px;
+    transition: transform 400ms ease 0s, visibility 400ms ease 0s;
+    background: #202328;
+  }
+
+  .burger-nav ul {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 }

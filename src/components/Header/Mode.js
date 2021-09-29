@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { toggleBg } from "../../reducers/toggleBgReducer";
+
+import "./Header.css";
 import Hamburger from "./Hamburger";
+import NavAside from "./NavAside";
 
 const Mode = ({ setMode, mode }) => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
   const color = !mode ? "#fff" : "#0083ca";
   const dispatch = useDispatch();
 
@@ -12,9 +16,18 @@ const Mode = ({ setMode, mode }) => {
     dispatch(toggleBg());
   };
 
+  const handleNavOpen = () => {
+    setIsNavOpen((prevState) => !prevState);
+  };
+
+  const handleNavClose = () => {
+    setIsNavOpen(false);
+  };
+
   return (
     <div>
-      <Hamburger />
+      <Hamburger handleNavOpen={handleNavOpen} isNavOpen={isNavOpen} />
+      <NavAside isNavOpen={isNavOpen} handleNavClose={handleNavClose} />
       <span className="mode" onClick={handleClick}>
         <svg fill="none" viewBox="0 0 14 20" width="14">
           <path

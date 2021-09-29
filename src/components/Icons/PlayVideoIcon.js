@@ -3,7 +3,7 @@ import React from "react";
 const PlayVideoIcon = () => {
   return (
     <svg
-      class="svg-icon svg-icon--play-button"
+      className="svg-icon svg-icon--play-button"
       width="22"
       fill="none"
       viewBox="0 0 22 26"

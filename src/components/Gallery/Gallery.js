@@ -21,8 +21,27 @@ const Gallery = () => {
           <h2 className="gallery-title">popular movies</h2>
         </div>
         <Swiper
-          spaceBetween={10}
-          slidesPerView={5}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+            },
+            400: {
+              slidesPerView: 2,
+              spaceBetween: 15,
+            },
+            480: {
+              slidesPerView: 2,
+              spaceBetween: 20,
+            },
+            580: {
+              slidesPerView: 3,
+              spaceBetween: 20,
+            },
+            780: {
+              slidesPerView: 4,
+              spaceBetween: 30,
+            },
+          }}
           navigation
           className="swiper-movies"
         >

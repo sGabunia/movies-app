@@ -1,4 +1,5 @@
 .footer {
+  margin-top: auto;
   padding: 0.5rem 0;
   background-color: #202328;
   color: #d5ddf5;
@@ -13,7 +14,8 @@
 
 .footer-social {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .footer-social__link {

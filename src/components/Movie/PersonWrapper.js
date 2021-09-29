@@ -11,18 +11,19 @@ const PersonWrapper = ({
 }) => {
   return (
     <li className="actor">
-      <Link to={`/actor/${id}`}>
-        <img
-          src={
-            imageSrc
-              ? `https://image.tmdb.org/t/p/w185${imageSrc}`
-              : `https://via.placeholder.com/150C/O https://placeholder.com/`
-          }
-          alt="movies's actor"
-          style={{ width: "100%" }}
-        />
-      </Link>
-      <div style={{ padding: 10 }}>
+      <div style={{ flexGrow: 1 }}>
+        <Link to={`/actor/${id}`}>
+          <img
+            src={
+              imageSrc
+                ? `https://image.tmdb.org/t/p/w185${imageSrc}`
+                : `https://via.placeholder.com/180C/O https://placeholder.com/`
+            }
+            alt="movies's actor"
+          />
+        </Link>
+      </div>
+      <div style={{ padding: 10, borderTop: "2px solid #ccc" }}>
         <p className="title-p">
           <strong>
             <Link to={`/${category}/${id}`}>{title}</Link>

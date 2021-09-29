@@ -29,14 +29,22 @@ ol {
 }
 
 /* Set core root defaults */
+
+html {
+  height: 100%;
+}
 html:focus-within {
   scroll-behavior: smooth;
 }
 
 /* Set core body defaults */
 body {
-  min-height: 100vh;
+  height: 100%;
   line-height: 1.5;
+}
+
+#root {
+  height: 100%;
 }
 
 /* A elements that don't have a class get default styles */
@@ -85,23 +93,23 @@ select {
 
 /* center content */
 .wrapper {
-  width: 90%;
+  width: 100%;
   max-width: 980px;
   margin-left: auto;
   margin-right: auto;
+  padding: 0 1rem;
 }
 
 .imposter {
   display: grid;
   place-items: center;
-  flex-grow: 1;
   padding: 1.5rem;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  min-height: 100%;
 }
 
 /* center buttons and links */

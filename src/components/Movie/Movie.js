@@ -84,7 +84,9 @@ const Movie = () => {
                 <img
                   src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
                   alt="film poster"
-                  style={{ borderRadius: "8px" }}
+                  style={{
+                    borderRadius: "8px",
+                  }}
                 />
               ) : (
                 "hello"

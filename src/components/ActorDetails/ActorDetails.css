@@ -5,6 +5,11 @@
   padding: 2rem 0;
 }
 
+@media (max-width: 780px) {
+  .actor-details {
+    grid-template-columns: 1fr;
+  }
+}
 .text {
   display: inline;
   width: 100%;
