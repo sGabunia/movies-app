@@ -73,7 +73,6 @@ const Movie = () => {
   if (status === "idle" || status === "pending") {
     return <Spinner />;
   }
-
   if (status === "resolved") {
     return (
       <section className="movie-details">
@@ -81,13 +80,27 @@ const Movie = () => {
           <div className="movie-details__card">
             <div className="movie-details__card-image">
               {movie.poster_path ? (
-                <img
-                  src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
-                  alt="film poster"
-                  style={{
-                    borderRadius: "8px",
-                  }}
-                />
+                <picture>
+                  <source
+                    srcSet={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                    media="(min-width: 780px)"
+                  />
+                  <source
+                    srcSet={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+                    media="(min-width: 480px)"
+                  />
+                  <source
+                    srcSet={`https://image.tmdb.org/t/p/w185${movie.poster_path}`}
+                    media="(min-width: 320px)"
+                  />
+                  <img
+                    src={`https://image.tmdb.org/t/p/w342${movie.poster_path}`}
+                    alt="film poster"
+                    style={{
+                      borderRadius: "8px",
+                    }}
+                  />
+                </picture>
               ) : (
                 "hello"
               )}
