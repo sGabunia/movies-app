@@ -26,7 +26,7 @@ Design is taken from www.adjaranet.com
 Clone the project
 
 ```bash
-  git clone https://link-to-project
+  git clone https://github.com/sGabunia/movies-app.git
 ```
 
 Go to the project directory
