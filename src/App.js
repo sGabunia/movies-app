@@ -18,6 +18,7 @@ import Footer from "./components/Footer/Footer";
 import Movie from "./components/Movie/Movie";
 import MoviesByGenreList from "./components/MovieByGenreList/MoviesByGenreList";
 import ActorDetails from "./components/ActorDetails/ActorDetails";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,7 @@ function App() {
       }}
     >
       <Router>
+        <ScrollToTop />
         <Header setMode={setSavedBgValue} mode={savedBgValue} />
 
         <Switch>

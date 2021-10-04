@@ -46,9 +46,11 @@
   border: 3px solid rgb(46, 45, 45);
   border-radius: 1rem;
   color: inherit;
+  font-style: italic;
 }
 
 .overview {
+  font-family: "Montserrat", sans-serif;
   max-width: 68ch;
 }
 
@@ -115,6 +117,7 @@
 
 .character {
   font-size: 0.9rem;
+  font-style: italic;
   width: 150px;
   white-space: nowrap;
   overflow: hidden;
@@ -128,16 +131,16 @@
 }
 
 .actors-panel-list {
-  display: grid;
-  grid-template-columns: repeat(10, minmax(200px, 1fr));
+  display: flex;
   gap: 1rem;
   padding: 1.5rem;
   overflow-x: auto;
 }
 
-/* .actors-panel-list > * {
-  flex-basis: 300px;
-} */
+.actors-panel-list > * {
+  flex-basis: 200px;
+  overflow: hidden;
+}
 
 .title-p {
   width: 150px;
@@ -215,6 +218,10 @@
   border-radius: 8px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   overflow: hidden;
+}
+
+.review-card h5 {
+  font-style: italic;
 }
 
 .show-reviews {

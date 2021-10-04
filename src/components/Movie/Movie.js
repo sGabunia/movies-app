@@ -71,7 +71,11 @@ const Movie = () => {
   };
 
   if (status === "idle" || status === "pending") {
-    return <Spinner />;
+    return (
+      <div className="imposter">
+        <Spinner />
+      </div>
+    );
   }
   if (status === "resolved") {
     return (
@@ -146,19 +150,19 @@ const Movie = () => {
               <ul className="card-content__crew">
                 <li className="profile">
                   <p>
-                    <strong>{director}</strong>
+                    <strong>{director || "no info"}</strong>
                   </p>
                   <p className="character">Director</p>
                 </li>
                 <li className="profile">
                   <p>
-                    <strong>{producer}</strong>
+                    <strong>{producer || "no info"}</strong>
                   </p>
                   <p className="character">Producer</p>
                 </li>
                 <li className="profile">
                   <p>
-                    <strong>{costumes}</strong>
+                    <strong>{costumes || "no info"}</strong>
                   </p>
                   <p className="character">Costume & Make-Up</p>
                 </li>
