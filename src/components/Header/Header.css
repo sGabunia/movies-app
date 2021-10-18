@@ -1,0 +1,196 @@
+.header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1rem 0;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+  background-color: #202328;
+  color: #ccc;
+}
+
+.header a {
+  background-color: transparent;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.nav__wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.7rem;
+}
+
+@media (max-width: 780px) {
+  .nav__wrapper {
+    display: none;
+  }
+}
+
+.nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  color: inherit;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.nav__item:hover {
+  color: rgb(0, 131, 202);
+}
+
+.nav__link {
+  transition: all 0.4s ease-in-out;
+}
+
+/* nav svg's styles on hover */
+svg rect,
+path {
+  transition: all 0.3s ease-in-out;
+}
+
+.svg-icon--tv {
+  height: 24px;
+}
+
+.nav__item:hover .svg-icon--tv rect,
+.nav__item:hover .svg-icon--series rect,
+.nav__item:hover .svg-icon--cinemania rect {
+  stroke: #0083ca;
+}
+
+.nav__item:hover .svg-icon--tv path,
+.nav__item:hover .svg-icon--series path,
+.nav__item:hover .svg-icon--cinemania path {
+  fill: rgb(0, 131, 202);
+}
+
+.nav__item:hover .svg-icon--movies path,
+.nav__item:hover .svg-icon--movies rect {
+  fill: rgb(0, 131, 202);
+}
+.nav__item:hover .svg-icon--kids path {
+  stroke: rgb(0, 131, 202);
+}
+
+.mode {
+  cursor: pointer;
+}
+
+@media (max-width: 780px) {
+  .mode {
+    display: none;
+  }
+}
+
+/* hamburger menu styling */
+.delayed-hamburger-animation {
+  display: none;
+  width: 30px;
+  height: 20px;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.delayed-hamburger-animation > .bar {
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  left: 0;
+  background-color: #fff;
+  border-radius: 2px;
+  transform-origin: center;
+}
+
+.delayed-hamburger-animation:hover > .bar {
+  background-color: #fff;
+}
+
+.delayed-hamburger-animation > .hamburger-trigger:checked ~ .bar:last-of-type {
+  transform: rotate(-45deg);
+  bottom: calc(50% - (4px / 2));
+  transition: bottom 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.3, 0.64, 1) 0.3s;
+}
+
+.delayed-hamburger-animation > .bar:first-of-type {
+  top: 0;
+  transition: top 0.2s ease 0.3s,
+    transform 0.2s cubic-bezier(0.34, 1.3, 0.64, 1), background-color 0.2s ease;
+}
+
+.delayed-hamburger-animation > .bar:last-of-type {
+  bottom: 0;
+  transition: bottom 0.2s ease 0.3s,
+    transform 0.2s cubic-bezier(0.34, 1.3, 0.64, 1), background-color 0.2s ease;
+}
+
+.delayed-hamburger-animation > .hamburger-trigger:checked ~ .bar:first-of-type {
+  transform: rotate(45deg);
+  top: calc(50% - (4px / 2));
+  transition: top 0.2s ease,
+    transform 0.2s cubic-bezier(0.34, 1.3, 0.64, 1) 0.3s;
+}
+
+.delayed-hamburger-animation > .hamburger-trigger {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  cursor: pointer;
+  z-index: 5;
+}
+
+@media (max-width: 780px) {
+  .delayed-hamburger-animation {
+    display: block;
+  }
+}
+
+/* burger nav styles */
+.burger-nav {
+  display: none;
+}
+
+@media (max-width: 780px) {
+  .burger-nav.open {
+    transform: translateX(0);
+    visibility: visible;
+  }
+
+  .burger-nav {
+    display: block;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    visibility: hidden;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    padding-right: 32px;
+    padding-left: 16px;
+    transition: transform 400ms ease 0s, visibility 400ms ease 0s;
+    background: #202328;
+  }
+
+  .burger-nav ul {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}

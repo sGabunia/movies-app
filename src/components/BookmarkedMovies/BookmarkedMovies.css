@@ -1,0 +1,16 @@
+.bookmarked-movies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.bookmarked-movies__image {
+  position: relative;
+}
+
+.remove-bookmarked {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  cursor: pointer;
+}

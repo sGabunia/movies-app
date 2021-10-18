@@ -1,0 +1,5 @@
+.banner {
+  height: 170px;
+  width: 100%;
+  background: no-repeat center center url(../../assets/images/banner.png);
+}
